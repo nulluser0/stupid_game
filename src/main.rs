@@ -68,7 +68,7 @@ fn main() {
         }
 
         println!("You answered:      {}", user_selection.unwrap());
-        let computer_rng = thread_rng().gen_range(1..3).to_string();
+        let computer_rng = thread_rng().gen_range(1..4).to_string();
         let computer_selection: Inputs = Inputs::from_str(&computer_rng).expect("how did this fail???");
         println!("Computer answered: {}", computer_selection.to_string());
 
