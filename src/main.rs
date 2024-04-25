@@ -69,7 +69,7 @@ fn main() {
         };
 
         if user_selection.is_err() {
-            println!("Invalid/No input!");
+            println!("Invalid/No input! Exiting...");
             return
         }
 
