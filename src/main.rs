@@ -49,8 +49,14 @@ fn determine_if_user_wins(user: Inputs, computer: Inputs) -> Result<GameResult, 
 
 fn main() {
     println!("Stupid game rock paper sissors (i spelt it wrong ik)");
+    let mut computer_wins = 0;
+    let mut user_wins = 0;
     loop {
         let mut input = String::new();
+        println!("========================");
+        println!("WINS:");
+        println!("Computer: {}", computer_wins);
+        println!("User:     {}", user_wins);
         println!("========================");
         println!("Rock, paper, or scissor? Input number. Press 'Ctrl + C' to exit.");
         println!("    1. Rock\n    2. Paper\n    3. Scissor");
@@ -73,9 +79,15 @@ fn main() {
         println!("Computer answered: {}", computer_selection.to_string());
 
         match determine_if_user_wins(Inputs::from_str(&input).unwrap(), computer_selection) {
-            Ok(GameResult::Win) => println!("You won!"),
+            Ok(GameResult::Win) => {
+                println!("You won!");
+                user_wins = user_wins + 1;
+            }
             Ok(GameResult::Draw) => println!("Draw........"),
-            Ok(GameResult::Lose) => println!("You lost..."),
+            Ok(GameResult::Lose) => {
+                println!("You lost...");
+                computer_wins = computer_wins + 1;
+            },
             Err(_) => println!("An error occured when determining result.")
         }
     }
