@@ -54,10 +54,10 @@ fn determine_if_user_wins(user: Inputs, computer: Inputs) -> Result<GameResult, 
 }
 
 fn main() {
-    println!("Stupid game rock paper sissors (i spelt it wrong ik)");
     let mut computer_wins = 0;
     let mut user_wins = 0;
     loop {
+        println!("Stupid game rock paper sissors (i spelt it wrong ik)");
         let mut input = String::new();
         println!("========================");
         println!("WINS:");
@@ -68,6 +68,7 @@ fn main() {
         println!("    1. Rock\n    2. Paper\n    3. Scissor");
         let _n = io::stdin().read_line(&mut input);
         let input = input.trim();
+        clearscreen::clear().expect("Failed to clear screen.");
         println!("You entered:       {}", input);
         let user_selection: Result<Inputs, String> = match Inputs::from_str(&input) {
             Ok(result) => Ok(result),
