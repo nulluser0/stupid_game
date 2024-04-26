@@ -5,7 +5,9 @@ use rand::{thread_rng, Rng};
 enum Inputs {
     Rock,
     Paper,
-    Scissor
+    Scissor,
+    Balls,
+    Gun
 }
 
 enum GameResult {
@@ -22,6 +24,8 @@ impl std::str::FromStr for Inputs {
             "1" => Ok(Inputs::Rock),
             "2" => Ok(Inputs::Paper),
             "3" => Ok(Inputs::Scissor),
+            "pp" => Ok(Inputs::Balls),
+            "gun" => Ok(Inputs::Gun),
             _ => Err(format!("{} is not an input!", s))
         }
     }
@@ -44,6 +48,8 @@ fn determine_if_user_wins(user: Inputs, computer: Inputs) -> Result<GameResult, 
             Inputs::Scissor => Ok(GameResult::Draw),
             _ => Ok(GameResult::Lose)
         }
+        Inputs::Balls => Ok(GameResult::Win),
+        Inputs::Gun => Ok(GameResult::Win)
     }
 }
 
